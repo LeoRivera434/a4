@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIs propiedades Leonardo Rivera</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .casa-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .casa-card:hover {
+            transform: translateY(-5px);
+        }
+        .casa-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .casa-info {
+            padding: 15px;
+        }
+        .casa-info h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.3em;
+        }
+        .casa-info p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+        .casa-info .precio {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nuestras Propiedades Leo Rivera</h1>
+
+    <div class="container">
+        {% if lista_casas %}
+            {% for casa in lista_casas %}
+                <div class="casa-card">
+                    <img src="{{ casa.imagen }}" alt="Imagen de {{ casa.nombre }}">
+                    <div class="casa-info">
+                        <h2>{{ casa.nombre }}</h2>
+                        <p><strong>Ubicación:</strong> {{ casa.ubicacion }}</p>
+                        <p><strong>Habitaciones:</strong> {{ casa.habitaciones }}</p>
+                        <p><strong>Baños:</strong> {{ casa.banos }}</p>
+                        <p><strong>Superficie:</strong> {{ casa.metros_cuadrados }} m²</p>
+                        <p class="precio">{{ casa.precio }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No hay propiedades disponibles en este momento.</p>
+        {% endif %}
+    </div>
+</body>
+</html>t)
